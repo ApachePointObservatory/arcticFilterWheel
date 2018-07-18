@@ -1,7 +1,0 @@
-2015-11-04 21:23:56.112 INFO:  UserCmd('', state=done)
-2015-11-04 21:23:56.113 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
-2015-11-04 21:23:56.113 INFO:  UserCmd('', state=done)
-2015-11-04 21:23:56.113 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
-2015-11-04 21:23:56.114 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
-2015-11-04 21:23:56.114 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
-2015-11-04 21:23:56.114 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
