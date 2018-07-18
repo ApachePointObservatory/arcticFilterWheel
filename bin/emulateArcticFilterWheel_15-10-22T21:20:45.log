@@ -1,0 +1,4 @@
+2015-10-22 21:20:45.760 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:45.761 INFO:  ArcticFWActor(mockArcticFW).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:20:45.761 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:45.761 INFO:  ArcticFWActor(mockArcticFW).server.state=Listening

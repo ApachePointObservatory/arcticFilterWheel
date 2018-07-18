@@ -1,0 +1,9 @@
+#setupRequired("numpy") # assume numpy is installed in python
+setupRequired("RO")
+setupRequired("twistedActor")
+setupRequired("opscore")
+
+envAppend(PYTHONPATH, ${FILTERDIR})
+envAppend(PATH, ${FILTERDIR})
+envAppend(PYTHONPATH, ${PRODUCT_DIR}/python)
+envAppend(PATH, ${PRODUCT_DIR}/bin)

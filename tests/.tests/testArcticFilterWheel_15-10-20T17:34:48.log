@@ -1,0 +1,9 @@
+2015-10-20 17:34:48.888 INFO:  UserCmd('', state=done)
+2015-10-20 17:34:48.889 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-20 17:34:48.889 INFO:  UserCmd('', state=done)
+2015-10-20 17:34:48.889 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-20 17:34:48.892 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_move(userCmd=UserCmd('move 15', state=ready)) desPos: 15
+2015-10-20 17:34:48.892 INFO:  UserCmd('move 15', state=failed, textMsg='desPos must be one of [1, 2, 3, 4, 5, 6] for move command')
+2015-10-20 17:34:48.892 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-20 17:34:48.892 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-20 17:34:48.893 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed

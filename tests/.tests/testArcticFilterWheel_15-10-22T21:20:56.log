@@ -1,0 +1,102 @@
+2015-10-22 21:20:56.704 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:56.705 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:20:56.705 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:56.705 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:20:56.707 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_home(userCmd=UserCmd('home', state=ready))
+2015-10-22 21:20:56.707 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_status(userCmd=UserCmd('home', state=ready))
+2015-10-22 21:20:56.708 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=Homing; cmdFilterID=NaN; encoderPos=NaN')
+2015-10-22 21:20:59.721 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_status(userCmd=UserCmd('home', state=ready))
+2015-10-22 21:20:59.721 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=Done; cmdFilterID=1; encoderPos=NaN')
+2015-10-22 21:20:59.721 INFO:  UserCmd('home', state=done)
+2015-10-22 21:20:59.722 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:20:59.722 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:20:59.723 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:20:59.725 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:59.725 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:20:59.726 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:59.726 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:20:59.730 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_init(userCmd=UserCmd('init', state=ready))
+2015-10-22 21:20:59.731 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('init', state=ready), timeLim=5, getStatus=True)
+2015-10-22 21:20:59.731 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_status(userCmd=UserCmd('init', state=ready))
+2015-10-22 21:20:59.731 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=NotHomed; cmdFilterID=NaN; encoderPos=NaN')
+2015-10-22 21:20:59.731 INFO:  UserCmd('init', state=done)
+2015-10-22 21:20:59.732 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:20:59.732 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:20:59.732 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:20:59.733 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:59.733 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:20:59.733 INFO:  UserCmd('', state=done)
+2015-10-22 21:20:59.734 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:20:59.736 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_move(userCmd=UserCmd('move 1', state=ready)) desPos: 1
+2015-10-22 21:20:59.736 INFO:  UserCmd('move 1', state=running)
+2015-10-22 21:20:59.736 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i state=Moving; cmdFilterID=1')
+2015-10-22 21:21:02.740 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 w text=motor status > 7 detected!')
+2015-10-22 21:21:02.741 INFO:  current move done
+2015-10-22 21:21:02.741 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_status(userCmd=UserCmd('move 1', state=running))
+2015-10-22 21:21:02.741 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 w text=motor status > 7 detected!')
+2015-10-22 21:21:02.741 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=NotHomed; cmdFilterID=1; encoderPos=NaN')
+2015-10-22 21:21:02.741 INFO:  UserCmd('move 1', state=failed, textMsg='Motor Step Err > 500, home filter wheel')
+2015-10-22 21:21:02.744 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:02.744 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:02.744 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:21:02.746 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:02.746 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:21:02.747 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:02.748 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:21:02.752 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_move(userCmd=UserCmd('move 15', state=ready)) desPos: 15
+2015-10-22 21:21:02.752 INFO:  UserCmd('move 15', state=failed, textMsg='desPos must be one of [1, 2, 3, 4, 5, 6] for move command')
+2015-10-22 21:21:02.752 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:02.753 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:02.753 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:21:02.754 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:02.754 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:21:02.754 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:02.754 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:21:02.757 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_move(userCmd=UserCmd('move 5', state=ready)) desPos: 5
+2015-10-22 21:21:02.757 INFO:  UserCmd('move 5', state=running)
+2015-10-22 21:21:02.757 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i state=Moving; cmdFilterID=5')
+2015-10-22 21:21:05.761 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 w text=motor status > 7 detected!')
+2015-10-22 21:21:05.761 INFO:  current move done
+2015-10-22 21:21:05.761 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_status(userCmd=UserCmd('move 5', state=running))
+2015-10-22 21:21:05.761 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 w text=motor status > 7 detected!')
+2015-10-22 21:21:05.762 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i desiredStep=100; filterID=5; currentStep=601; wheelID=7; state=NotHomed; cmdFilterID=5; encoderPos=NaN')
+2015-10-22 21:21:05.762 INFO:  UserCmd('move 5', state=failed, textMsg='Motor Step Err > 500, home filter wheel')
+2015-10-22 21:21:05.762 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:05.762 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:05.771 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:21:05.772 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.772 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:21:05.773 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.773 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:21:05.773 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:05.773 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:05.774 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:21:05.774 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.775 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:21:05.775 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.775 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:21:05.777 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_ping(userCmd=UserCmd('ping', state=ready))
+2015-10-22 21:21:05.777 INFO:  UserCmd('ping', state=done, textMsg='alive')
+2015-10-22 21:21:05.777 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:05.778 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:05.778 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:21:05.779 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.779 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:21:05.779 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.779 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:21:05.781 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_status(userCmd=UserCmd('status', state=ready))
+2015-10-22 21:21:05.781 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 w text=motor status > 7 detected!')
+2015-10-22 21:21:05.781 INFO:  ArcticFWActor(arcticFWActorWrapper).writeToUsers('0 0 i desiredStep=100; filterID=5; currentStep=601; wheelID=7; state=NotHomed; cmdFilterID=NaN; encoderPos=NaN')
+2015-10-22 21:21:05.781 INFO:  UserCmd('status', state=done)
+2015-10-22 21:21:05.782 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:05.782 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:05.782 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed
+2015-10-22 21:21:05.783 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.783 INFO:  ArcticFWActor(arcticFWActorWrapper).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:21:05.783 INFO:  UserCmd('', state=done)
+2015-10-22 21:21:05.784 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Listening
+2015-10-22 21:21:05.785 INFO:  ArcticFWActor(arcticFWActorWrapper).cmd_stop(userCmd=UserCmd('stop', state=ready))
+2015-10-22 21:21:05.785 INFO:  UserCmd('stop', state=done)
+2015-10-22 21:21:05.786 INFO:  ArcticFWActor(arcticFWActorWrapper).close()
+2015-10-22 21:21:05.786 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closing
+2015-10-22 21:21:05.792 INFO:  ArcticFWActor(arcticFWActorWrapper).server.state=Closed

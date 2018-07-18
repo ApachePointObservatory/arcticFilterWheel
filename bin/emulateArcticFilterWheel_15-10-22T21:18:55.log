@@ -1,0 +1,31 @@
+2015-10-22 21:18:55.590 INFO:  UserCmd('', state=done)
+2015-10-22 21:18:55.591 INFO:  ArcticFWActor(mockArcticFW).init(userCmd=UserCmd('', state=ready), timeLim=5, getStatus=False)
+2015-10-22 21:18:55.591 INFO:  UserCmd('', state=done)
+2015-10-22 21:18:55.591 INFO:  ArcticFWActor(mockArcticFW).server.state=Listening
+2015-10-22 21:19:09.380 INFO:  ArcticFWActor(mockArcticFW).writeToOneUser('0 1 i yourUserID=1; numUsers=1'); userID=1
+2015-10-22 21:19:09.380 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 i UserInfo=1, 127.0.0.1')
+2015-10-22 21:19:09.380 INFO:  ArcticFWActor(mockArcticFW).writeToOneUser('0 1 i version="0.0.2"'); userID=1
+2015-10-22 21:19:11.839 INFO:  ArcticFWActor(mockArcticFW).newCmd('status')
+2015-10-22 21:19:11.843 INFO:  ArcticFWActor(mockArcticFW).cmd_status(userCmd=UserCmd('status', state=ready))
+2015-10-22 21:19:11.843 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=NotHomed; cmdFilterID=NaN; encoderPos=NaN')
+2015-10-22 21:19:11.843 INFO:  UserCmd('status', state=done)
+2015-10-22 21:19:11.843 INFO:  ArcticFWActor(mockArcticFW) UserCmd('status', state=done)
+2015-10-22 21:19:11.843 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 : ')
+2015-10-22 21:19:21.728 INFO:  ArcticFWActor(mockArcticFW).newCmd('move 3')
+2015-10-22 21:19:21.733 INFO:  ArcticFWActor(mockArcticFW).cmd_move(userCmd=UserCmd('move 3', state=ready)) desPos: 3
+2015-10-22 21:19:21.733 INFO:  UserCmd('move 3', state=failed, textMsg='cannot command move, home filter wheel first.')
+2015-10-22 21:19:21.733 INFO:  ArcticFWActor(mockArcticFW) UserCmd('move 3', state=failed, textMsg='cannot command move, home filter wheel first.')
+2015-10-22 21:19:21.733 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 f text="cannot command move, home filter wheel first."')
+2015-10-22 21:19:30.448 INFO:  ArcticFWActor(mockArcticFW).newCmd('home')
+2015-10-22 21:19:30.453 INFO:  ArcticFWActor(mockArcticFW).cmd_home(userCmd=UserCmd('home', state=ready))
+2015-10-22 21:19:30.453 INFO:  ArcticFWActor(mockArcticFW).cmd_status(userCmd=UserCmd('home', state=ready))
+2015-10-22 21:19:30.453 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=Homing; cmdFilterID=NaN; encoderPos=NaN')
+2015-10-22 21:19:33.466 INFO:  ArcticFWActor(mockArcticFW).cmd_status(userCmd=UserCmd('home', state=ready))
+2015-10-22 21:19:33.467 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 i desiredStep=100; filterID=1; currentStep=601; wheelID=7; state=Done; cmdFilterID=1; encoderPos=NaN')
+2015-10-22 21:19:33.467 INFO:  UserCmd('home', state=done)
+2015-10-22 21:19:33.467 INFO:  ArcticFWActor(mockArcticFW) UserCmd('home', state=done)
+2015-10-22 21:19:33.467 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 : ')
+2015-10-22 21:19:42.660 INFO:  ArcticFWActor(mockArcticFW).newCmd('move 3')
+2015-10-22 21:19:42.663 INFO:  ArcticFWActor(mockArcticFW).cmd_move(userCmd=UserCmd('move 3', state=ready)) desPos: 3
+2015-10-22 21:19:42.663 INFO:  UserCmd('move 3', state=running)
+2015-10-22 21:19:42.674 INFO:  ArcticFWActor(mockArcticFW).writeToUsers('0 1 f Exception=KeyError; Text="\'isMoving\'"')
