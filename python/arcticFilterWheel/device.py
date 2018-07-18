@@ -68,12 +68,14 @@ class Status(object):
         self.wheelID = None
         self.inPosition = None
         self.diffuserIn = None
+
         self.isHomed = False
         self.targetPos = None
         self.isHoming = False
         self.homeCallback = None
         self.moveCallback = None
         self.filterID = None
+        self.cmdFilterID = None
         self.isMoving = False
 
     @property
@@ -330,7 +332,7 @@ def mcb():
     reactor.stop()
     disconnect()
 
-def home(homeCallback=None):
+def home():
     print("start home")
     global MOVE_DIR
     global MOVE_COUNTER_TARGET
@@ -341,13 +343,9 @@ def home(homeCallback=None):
     setPos(0)
     status.isHoming = True
     status.isMoving = True
-    if homeCallback is not None:
-        status.addHomeCallback(homeCallback)
-    else:
-        status.addHomeCallback(hcb)
     offsetFilter()
 
-def moveToFilter(filterID, moveCallback=None):
+def moveToFilter(filterID):
     global MOVE_DIR
     global MOVE_COUNTER
     global MOVE_COUNTER_TARGET
@@ -366,11 +364,8 @@ def moveToFilter(filterID, moveCallback=None):
     if status.isMoving:
         print("wheel moving")
         return
-    if moveCallback is not None:
-        status.addMoveCallback(moveCallback)
-    else:
-        status.addMoveCallback(mcb)
     status.isMoving = True
+    status.cmdFilterID = filterID
     currFilter = status.filterID
     filtCounts = filterID - currFilter
     MOVE_COUNTER_TARGET = numpy.abs(filtCounts)
@@ -394,6 +389,14 @@ def setupGPIO():
     device.evsetmask(HALL_POS, 0)
     device.evclrwatch()
     print("done gpio setup")
+
+def init():
+    connect()
+    setupGPIO()
+    stop()
+    setPos(0)
+    status.update()
+    beginStatusLoop()
 
 
 if __name__ == "__main__":
