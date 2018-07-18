@@ -40,11 +40,11 @@ class ArcticFWStatus(object):
     def kwMap(self):
         return collections.OrderedDict((
             ("state", self.state),
-            ("wheelID", self.status.wheelID),
-            ("filterID", self.status.filterID),
+            ("wheelID", "NaN" if self.status.wheelID is None else self.status.wheelID),
+            ("filterID", "NaN" if self.status.filterID is None else self.status.filterID),
             ("cmdFilterID", "NaN" if self.status.cmdFilterID is None else self.status.cmdFilterID),
             ("encoderPos", self.status.encPos),
-            ("inPosition", self.status.inPosition)
+            ("inPosition", self.status.inPosition),
             ("atHome", self.status.atHome),
             ("diffuInBeam", "?" if self.status.diffuserIn is None else self.status.diffuserIn),
         ))
