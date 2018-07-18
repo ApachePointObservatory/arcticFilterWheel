@@ -391,6 +391,8 @@ def setupGPIO():
     print("done gpio setup")
 
 def init():
+    disconnect()
+    time.sleep(1)
     connect()
     setupGPIO()
     stop()
