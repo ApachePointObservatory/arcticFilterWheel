@@ -396,6 +396,7 @@ def init():
     connect()
     setupGPIO()
     stop()
+    status.isHomed = False
     setPos(0)
     status.update()
     beginStatusLoop()
