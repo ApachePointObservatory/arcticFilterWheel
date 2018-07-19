@@ -54,8 +54,8 @@ motorInitList = [
 ]
 
 fwDIR = os.environ["ARCTICFILTERWHEEL_DIR"]
-soPath = os.path.join(fwDIR,"src/device.so")
-print("so path", soPath)
+soPath = os.path.join(fwDIR,"src/device.so"
+
 device = CDLL(soPath)
 device.getUSBReply.restype = c_char_p
 
@@ -161,11 +161,9 @@ def setPos(pos):
     # set motor and encoder pos
     success = device.sendCmd("PX=%i"%pos)
     if success == -1:
-        print("failed to set PX")
         return None
     success = device.sendCmd("EX=%i"%pos)
     if success == -1:
-        print("failed to set EX")
         return None
     return True
 
@@ -178,13 +176,11 @@ def motorStatus():
 def motorOn():
     cmdStr = "EO=1"
     success = device.sendCmd(cmdStr)
-    print("%s: %s"%(cmdStr, device.getUSBReply()))
     return success == 1
 
 def motorOff():
     cmdStr="EO=0"
     success = device.sendCmd(cmdStr)
-    print("%s: %s"%(cmdStr, device.getUSBReply()))
     return success == 1
 
 def stop():
@@ -200,13 +196,11 @@ def connect():
     while True:
         out=device.commFlush()
         if out==-1:
-            print("commflush failed, try again")
             time.sleep(1)
         else:
             break
     for cmdStr, delay in motorInitList:
         device.sendCmd(cmdStr)
-        print("%s: %s"%(cmdStr, device.getUSBReply()))
         time.sleep(delay)
 
 def disconnect():
@@ -220,7 +214,6 @@ def move(absPos):
     # joe put a CLR command here...I'm not
     cmdStr = "X%i"%absPos
     success = device.sendCmd(cmdStr)
-    print("%s: %s"%(cmdStr, device.getUSBReply()))
     status.targetPos = absPos
     targetDir = 1
     if absPos < status.encPos:
@@ -239,15 +232,12 @@ def stopNext(d):
         global GOT_LOW
         inPos = positionTriggered()
         if not GOT_LOW and not inPos:
-            print("got low")
             GOT_LOW = True
         elif GOT_LOW and inPos:
-            print("got high-stopping")
             LOOP_CALL.stop()
             stop()
             d.callback(None)
         elif motorStatus() == 0:
-            print("motor stopped! shit!")
             try:
                 LOOP_CALL.stop()
                 d.callback(None) # should be error back?
@@ -263,7 +253,6 @@ def checkPosition(dummy):
     status.update()
     MOVE_COUNTER += 1
     if not status.inPosition:
-        print("shit i'm lost, try homing?")
         status.isHomed = False
         status.isHoming = False
         status.isMoving = False
@@ -306,7 +295,6 @@ def checkPosition(dummy):
             elif filterID <= 0:
                 filterID += 6
             status.filterID = filterID
-            print("move to filter %i finished"%filterID)
             status.moveCallback()
 
 def beginStatusLoop():
@@ -322,18 +310,7 @@ def offsetFilter():
     move(nextPos)
     stopNext(d)
 
-def hcb():
-    print("home finished")
-    print("wheel ID", status.wheelID)
-
-def mcb():
-    print("move finished")
-    print("filterID", status.filterID)
-    reactor.stop()
-    disconnect()
-
 def home():
-    print("start home")
     global MOVE_DIR
     global MOVE_COUNTER_TARGET
     global MOVE_COUNTER
@@ -351,18 +328,13 @@ def moveToFilter(filterID):
     global MOVE_COUNTER_TARGET
     MOVE_COUNTER = 0
     status.update()
-    print("moveing to filter", filterID)
     if filterID not in [1,2,3,4,5,6]:
-        print("unknown filter")
         return
     if not status.isHomed:
-        print("not homed")
         return
     if not status.inPosition:
-        print("filter position not known")
         return
     if status.isMoving:
-        print("wheel moving")
         return
     status.isMoving = True
     status.cmdFilterID = filterID
@@ -379,7 +351,6 @@ def moveToFilter(filterID):
 
 def setupGPIO():
     # begin masking all
-    print("setupGPIO")
     device.evgpioinit()
     for ii in range(128):
         device.evsetmask(ii,1)
@@ -388,7 +359,6 @@ def setupGPIO():
     # unmask hall position bit (not sure it's necessary?)
     device.evsetmask(HALL_POS, 0)
     device.evclrwatch()
-    print("done gpio setup")
 
 def init():
     connect()
@@ -405,7 +375,6 @@ if __name__ == "__main__":
     setupGPIO()
     setPos(0)
     status.update()
-    print(status)
     beginStatusLoop()
     if len(sys.argv)==2:
         if sys.argv[1].lower() == "home":
@@ -426,8 +395,7 @@ if __name__ == "__main__":
 
 ########### for reference using callbacks with c types, couldn't
 # figure out how to work in a non blocking way
-# def positionCallback(dio, value):
-#     print("CB dio %i: %i, %i"%(dio,value,currentPos()))
+# def positionCallback(dio, value):#
 # c_positionCallback = CFUNCTYPE(None, write_callback_prototype(positionCallback)
 # device.evwatchin.restype = None
 # CBFUNC = CFUNCTYPE(None, c_int, c_int)
