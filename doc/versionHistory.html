@@ -5,6 +5,12 @@
 </head>
 <body>
 <h1><a href="index.html">ARCTIC Filter Wheel</a> Version History</h1>
+
+<h4>2.0 2018-07-19<h4>
+<ul>
+    <li> Completely move and re-wrap C codebase (evgpio and arcus) into product.  Change move strategy to move incrementally 1 filter at a time and verifying a detection for every position bit hall sensor.  When a position bit is sensed the motor is commanded to stop (with decel).  The motor parameters have been tuned such that the wheel should decelerate into the center (+- 10 steps) of the magnent.
+</ul>
+
 <h3>1.0 2017-01-11</h3>
 <ul>
     <li> Add diffuser control.
