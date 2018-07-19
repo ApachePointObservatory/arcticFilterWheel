@@ -54,7 +54,7 @@ motorInitList = [
 ]
 
 fwDIR = os.environ["ARCTICFILTERWHEEL_DIR"]
-soPath = os.path.join(fwDIR,"src/device.so"
+soPath = os.path.join(fwDIR,"src/device.so")
 
 device = CDLL(soPath)
 device.getUSBReply.restype = c_char_p
@@ -101,6 +101,8 @@ class Status(object):
         self.diffuserIn = diffuserInPos()
 
     def __repr__(self):
+        """blah
+        """
         attrList = [
             "motorMoving",
             "motorPos",
