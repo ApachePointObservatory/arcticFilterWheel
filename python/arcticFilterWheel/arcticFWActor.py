@@ -114,6 +114,8 @@ class ArcticFWActor(Actor):
         self.fwHomeCmd.setState(self.fwHomeCmd.Done)
         self.fwMoveCmd = UserCmd()
         self.fwMoveCmd.setState(self.fwMoveCmd.Done)
+        self.status.addHomeCallback(self.homeCallback)
+        self.status.addMoveCallback(self.moveCallback)
         # init the filterWheel
         # this sets self.filterWheel
         Actor.__init__(self,
@@ -123,7 +125,7 @@ class ArcticFWActor(Actor):
             version = __version__,
             commandSet = commandSet,
             )
-        self.init(getStatus=False)
+        init()
 
 
     @property
@@ -138,9 +140,6 @@ class ArcticFWActor(Actor):
         """
         userCmd = expandUserCmd(userCmd)
         log.info("%s.init(userCmd=%s, timeLim=%s, getStatus=%s)" % (self, userCmd, timeLim, getStatus))
-        init()
-        self.status.addHomeCallback(self.homeCallback)
-        self.status.addMoveCallback(self.moveCallback)
         if getStatus:
             self.cmd_status(userCmd) # sets done
         else:

@@ -190,6 +190,9 @@ def motorOff():
 def stop():
     cmdStr = "STOP"
     success = device.sendCmd(cmdStr)
+    ### blocks but who cares, its very short
+    while motorStatus() != 0:
+        pass
     return success == 1
 
 def connect():
@@ -240,10 +243,8 @@ def stopNext(d=None):
             GOT_LOW = True
         elif GOT_LOW and inPos:
             print("got high-stopping")
-            stop()
             LOOP_CALL.stop()
-            while motorStatus() != 0:
-                pass
+            stop()
             status.update()
             if d is not None:
                 d.callback(None)
@@ -391,8 +392,6 @@ def setupGPIO():
     print("done gpio setup")
 
 def init():
-    disconnect()
-    time.sleep(1)
     connect()
     setupGPIO()
     stop()
