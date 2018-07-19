@@ -58,6 +58,10 @@ class ArcticFWStatus(object):
         return self.status.isHomed
 
     @property
+    def atHome(self):
+        return self.status.atHome
+
+    @property
     def inPosition(self):
         return self.status.inPosition
 
