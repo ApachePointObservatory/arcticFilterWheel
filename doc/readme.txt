@@ -66,7 +66,7 @@ $make
 
 lastly declare this in eups and make it the current version
 
-$eups declare arcticFilterWheel 1.2.3 --current
+$eups declare -r /root/code/installed/arcticFilterWheel/1.2.3 arcticFilterWheel 1.2.3 --current
 
 To restart as tagged version:
 
