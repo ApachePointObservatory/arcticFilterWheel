@@ -231,14 +231,30 @@ class ArcticFWActor(Actor):
         """Move the diffuser into the beam
         """
         setDiffuserIn()
-        self.cmd_status(userCmd)
+        self.getStatus()
+        self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
+        userCmd.setState(userCmd.Done)
         return True
 
     def cmd_diffuOut(self, userCmd):
         """Move the diffuser out of the beam
         """
         setDiffuserOut()
-        self.cmd_status(userCmd)
+        self.getStatus()
+        self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
+        userCmd.setState(userCmd.Done)
+        return True
+
+    def cmd_startDiffuRot(self, userCmd):
+        """Move the diffuser into the beam
+        """
+        userCmd.setState(userCmd.Failed, 'Rotation not implemented')
+        return True
+
+    def cmd_stopDiffuRot(self, userCmd):
+        """Move the diffuser out of the beam
+        """
+        userCmd.setState(userCmd.Failed, 'Rotation not implemented')
         return True
 
 

@@ -46,13 +46,13 @@ arcticFWCommandSet = CommandSet(
             helpStr = "Move the diffuser out of the beam."
         ),
 
-        # Command(
-        #     commandName = "startDiffuRot",
-        #     helpStr = "Begin rotating the diffuser."
-        # ),
-        # Command(
-        #     commandName = "stopDiffuRot",
-        #     helpStr = "Stop rotating the diffuser."
-        # ),
+        Command(
+            commandName = "startDiffuRot",
+            helpStr = "Begin rotating the diffuser."
+        ),
+        Command(
+            commandName = "stopDiffuRot",
+            helpStr = "Stop rotating the diffuser."
+        ),
     ]
 )
