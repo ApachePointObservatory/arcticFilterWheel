@@ -183,7 +183,7 @@ class ArcticFWActor(Actor):
 
     def moveCallback(self):
         self.getStatus()
-        self.writeToUsers("i", self.status.moveStr, cmd=userCmd)
+        self.writeToUsers("i", self.status.moveStr, cmd=self.fwMoveCmd)
         if self.status.inPosition:
             self.fwMoveCmd.setState(self.fwMoveCmd.Done)
         else:
@@ -191,7 +191,7 @@ class ArcticFWActor(Actor):
 
     def homeCallback(self):
         self.getStatus()
-        self.writeToUsers("i", self.status.moveStr, cmd=userCmd)
+        self.writeToUsers("i", self.status.moveStr, cmd=self.fwHomeCmd)
         if self.status.inPosition and self.status.atHome:
             self.fwHomeCmd.setState(self.fwHomeCmd.Done)
         else:
