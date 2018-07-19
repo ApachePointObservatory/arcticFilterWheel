@@ -58,6 +58,10 @@ class ArcticFWStatus(object):
         return self.status.isHomed
 
     @property
+    def inPosition(self):
+        return self.status.inPosition
+
+    @property
     def state(self):
         state = self.Done
         if self.status.isHoming:
@@ -88,13 +92,6 @@ class ArcticFWStatus(object):
     def statusStr(self):
         # todo: only output a changed status value?
         return "; ".join(["%s=%s"%(kw, str(val)) for kw, val in self.kwMap.iteritems()])
-
-    @property
-    def hallInPos(self):
-        """Return true if the magnent is lined up
-        with sensor (a filter is in position)
-        """
-        return self.status.inPosition
 
 class ArcticFWActor(Actor):
     Facility = syslog.LOG_LOCAL1
