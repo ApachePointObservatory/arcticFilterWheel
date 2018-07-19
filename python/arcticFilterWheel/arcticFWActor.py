@@ -182,12 +182,16 @@ class ArcticFWActor(Actor):
         return True
 
     def moveCallback(self):
+        self.getStatus()
+        self.writeToUsers("i", self.status.moveStr, cmd=userCmd)
         if self.status.inPosition:
             self.fwMoveCmd.setState(self.fwMoveCmd.Done)
         else:
             self.fwMoveCmd.setState(self.fwMoveCmd.Failed, "Failed to stop at filter sensor")
 
     def homeCallback(self):
+        self.getStatus()
+        self.writeToUsers("i", self.status.moveStr, cmd=userCmd)
         if self.status.inPosition and self.status.atHome:
             self.fwHomeCmd.setState(self.fwHomeCmd.Done)
         else:
@@ -250,9 +254,6 @@ class ArcticFWActor(Actor):
         @param[in]  userCmd  a twistedActor command with a parsedCommand attribute
         """
         log.info("%s.cmd_status(userCmd=%s)"%(self, str(userCmd)))
-        # print("%s.cmd_status(userCmd=%s)"%(self, str(userCmd)))
-        # statusStr = self.getCameraStatus()
-        # self.writeToUsers("i", statusStr, cmd=userCmd)
         userCmd = expandUserCmd(userCmd)
         self.getStatus()
         self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
