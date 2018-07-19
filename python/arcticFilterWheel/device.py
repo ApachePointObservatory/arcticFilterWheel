@@ -228,7 +228,7 @@ def move(absPos):
     status.targetDir = targetDir
     return success == 1
 
-def stopNext(d=None):
+def stopNext(d):
     # stop at next sensed hall
     # must go from low to high
     # incase we start on a hall
@@ -245,15 +245,14 @@ def stopNext(d=None):
             print("got high-stopping")
             LOOP_CALL.stop()
             stop()
-            status.update()
-            if d is not None:
-                d.callback(None)
-            else:
-                disconnect()
-                reactor.stop()
+            d.callback(None)
         elif motorStatus() == 0:
             print("motor stopped! shit!")
-            d.callback(None) # should be error back?
+            try:
+                LOOP_CALL.stop()
+                d.callback(None) # should be error back?
+            except:
+                pass # may have been called if user commanded a stop
     LOOP_CALL = task.LoopingCall(checkBit)
     LOOP_CALL.start(0.02)
 
