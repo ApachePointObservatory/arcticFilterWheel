@@ -46,7 +46,7 @@ class ArcticFWStatus(object):
             ("encoderPos", self.status.encPos),
             ("inPosition", self.status.inPosition),
             ("atHome", self.status.atHome),
-            ("diffuInBeam", "?" if self.status.diffuserIn is None else self.status.diffuserIn),
+            ("diffuInBeam", "?" if self.status.diffuserIn is None else int(self.status.diffuserIn)),
         ))
 
     @property
