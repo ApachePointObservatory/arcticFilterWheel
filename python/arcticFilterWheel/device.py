@@ -272,7 +272,7 @@ def checkPosition(dummy):
             status.homeCallback()
         else:
             status.moveCallback()
-    if MOVE_COUNTER < MOVE_COUNTER_TARGET:
+    elif MOVE_COUNTER < MOVE_COUNTER_TARGET:
         #another move wanted
         if status.atHome:
             setPos(0)
