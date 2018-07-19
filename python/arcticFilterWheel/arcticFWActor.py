@@ -54,6 +54,10 @@ class ArcticFWStatus(object):
         return self.status.filterID
 
     @property
+    def isHomed(self):
+        return self.status.isHomed
+
+    @property
     def state(self):
         state = self.Done
         if self.status.isHoming:
