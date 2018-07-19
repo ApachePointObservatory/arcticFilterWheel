@@ -22,7 +22,7 @@ arcticFWCommandSet = CommandSet(
             helpStr = "Home the filter wheel."
         ),
         Command(
-            commandName = "stop",
+            commandName = "stopWheel",
             helpStr = "Stop any filter wheel movement."
         ),
         Command(

@@ -170,7 +170,7 @@ class ArcticFWActor(Actor):
         userCmd.setState(userCmd.Done, textMsg="alive")
         return True
 
-    def cmd_stop(self, userCmd):
+    def cmd_stopWheel(self, userCmd):
         log.info("%s.cmd_stop(userCmd=%s)"%(self, str(userCmd)))
         # print("%s.cmd_stop(userCmd=%s)"%(self, str(userCmd)))
         if not self.fwMoveCmd.isDone:
