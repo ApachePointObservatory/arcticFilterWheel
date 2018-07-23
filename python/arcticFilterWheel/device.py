@@ -29,6 +29,9 @@ ID_2 = 38 # fw ID twos bit
 ID_4 = 39 # fw ID fours bit
 DIFFU = 76 # diffuser bit
 
+# initialization send to the stepper motor controller
+# 2nd (float) value indicates the time delay imposed after
+# sending the command
 motorInitList = [
     ("ID", 0.1),
     ("DN", 0.1),
