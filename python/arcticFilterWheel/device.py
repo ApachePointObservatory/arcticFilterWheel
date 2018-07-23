@@ -16,7 +16,7 @@ from twisted.internet import task
 # spacing between hall effects were in the range [1290,1370] steps
 
 FILT_MAX_DIST = 1500 # amonut of steps to drive to find next filter
-STATUS_POLL = 0.25 #seconds
+STATUS_POLL = 1 #seconds
 MOVE_DIR = None
 MOVE_COUNTER = 0
 MOVE_COUNTER_TARGET = None
