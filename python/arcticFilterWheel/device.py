@@ -44,7 +44,7 @@ motorInitList = [
     ("SCV=0", 0.1),
     ("IERR=0", 0.1), # changed from 1
     ("MST", 0.1),
-    # ("RR", 2.5),
+    ("RR", 2.5),
     ("DRVRC=1500", 0.1),
     ("RW", 1),
     ("SL=0", 1), # disable sn loop
@@ -54,6 +54,7 @@ motorInitList = [
     ("HSPD=250", 0.1),
     ("ACC=70", 0.1),
     ("DEC=70", 0.1),
+    ("EO=1", 0.1), #power up the motor
 ]
 
 fwDIR = os.environ["ARCTICFILTERWHEEL_DIR"]
