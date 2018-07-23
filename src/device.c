@@ -57,7 +57,7 @@ int sendCmd(char *cmdStr){
         printf("Command %s failed\n", cmdStr);
         return -1;
     }
-    printf("Command Succeeded: %s, response: %s", cmdStr, usbResponse)
+    printf("Command Succeeded: %s, response: %s", cmdStr, usbResponse);
     return 1;
 }
 
