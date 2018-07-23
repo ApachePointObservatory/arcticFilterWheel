@@ -46,7 +46,7 @@ motorInitList = [
     ("MST", 0.1),
     ("RR", 2.5),
     ("DRVRC=1500", 0.1),
-    ("RW", 1),
+    ("RW", 2),
     ("SL=1", 1), # disable sn loop
     ("SLR=25", 2.5),
     ("CLR", 0.1),
