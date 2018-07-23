@@ -42,7 +42,7 @@ motorInitList = [
     ("POL=6", 0.1),
     ("POL=1", 0.1),
     ("SCV=0", 0.1),
-    ("IERR=1", 0.1),
+    ("IERR=0", 0.1), # changed from 1
     ("MST", 0.1),
     # ("RR", 2.5),
     ("DRVRC=1500", 0.1),
@@ -126,7 +126,7 @@ def positionTriggered():
     posBit = device.evgetin(HALL_POS)
     print("motor state", motorStatus())
     print("motor pos", motorPos())
-    print("enc pos", endPos())
+    print("enc pos", encPos())
     return posBit==0
 
 def readWheelID():
