@@ -125,9 +125,9 @@ status = Status()
 def positionTriggered():
     # goes low when hall is sensed
     posBit = device.evgetin(HALL_POS)
-    print("motor state", motorStatus())
-    print("motor pos", motorPos())
-    print("enc pos", encPos())
+    # print("motor state", motorStatus())
+    # print("motor pos", motorPos())
+    # print("enc pos", encPos())
     return posBit==0
 
 def readWheelID():
