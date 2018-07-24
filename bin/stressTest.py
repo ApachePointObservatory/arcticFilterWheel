@@ -10,8 +10,10 @@ import numpy
 UserPort = 37000
 
 ITER = 0
-MAXITER = 500
+MAXITER = 5
 nextMove = 1
+
+moveLog = []
 
 class ParsedCommand(object):
     def __init__(self, pos):
@@ -39,9 +41,14 @@ if __name__ == "__main__":
         if ITER > MAXITER:
             reactor.stop()
             print("done")
+            with open("moveLog.txt", "w") as f:
+                for line in moveLog:
+                    f.write(line+"\n")
             return
 
-        print("move result: %i %i %s %s"%(ITER, nextMove, str(arcticFilterWheel.status.status._wheelID), str(userCmd.didFail)))
+        statusStr = "move result: %i %i %s %s"%(ITER, nextMove, str(arcticFilterWheel.status.status._wheelID), str(userCmd.didFail))
+        print(statusStr)
+        moveLog.append(statusStr)
         if not arcticFilterWheel.status.isHomed:
             home()
             return
