@@ -38,7 +38,7 @@ if __name__ == "__main__":
             home()
             return
         while True:
-            tmp = numpy.random.choice(range(1,7))
+            tmp = numpy.random.randint(1,7)
             if tmp != nextMove:
                 nextMove = tmp
                 break
