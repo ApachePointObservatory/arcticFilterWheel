@@ -34,7 +34,7 @@ if __name__ == "__main__":
             return
 
         print("move result: %i %i %s %s"%(ITER, nextMove, str(arcticFilterWheel.status.status._wheelID), str(userCmd.didFail)))
-        if not arcticFilterWheel.isHomed:
+        if not arcticFilterWheel.status.isHomed:
             home()
             return
         while True:
