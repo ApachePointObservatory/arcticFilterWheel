@@ -2,7 +2,7 @@
 from __future__ import division, absolute_import
 """Run the Arctic Filter Wheel actor
 """
-from twistedActor import startSystemLogging, expandUserCommand
+from twistedActor import startSystemLogging, UserCmd
 from arcticFilterWheel import ArcticFWActor
 from twisted.internet import reactor
 import numpy
@@ -12,6 +12,9 @@ UserPort = 37000
 ITER = 0
 MAXITER = 5
 nextMove = 0
+
+def expandCommand():
+    return UserCmd()
 
 if __name__ == "__main__":
     print("arcticFilterWheel running on port %i"%UserPort)
@@ -39,13 +42,13 @@ if __name__ == "__main__":
             if tmp != nextMove:
                 nextMove = tmp
                 break
-        nextCmd = expandUserCommand()
+        nextCmd = expandCommand()
         arcticFilterWheel.cmd_move(nextCmd)
         nextCmd.addCallback(beginCycle)
 
     def home():
         print("homing")
-        homeCmd = expandUserCommand()
+        homeCmd = expandCommand()
         arcticFilterWheel.cmd_home(homeCmd)
         homeCmd.addCallback(beginCycle)
 
