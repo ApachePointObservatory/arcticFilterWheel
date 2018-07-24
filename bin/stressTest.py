@@ -13,8 +13,16 @@ ITER = 0
 MAXITER = 5
 nextMove = 0
 
+class ParsedCommand(object)
+    def __init__(self, pos):
+        self.parsedPositionalArgs = [pos]
+
 def expandCommand():
     return UserCmd()
+
+def fakeParse(userCmd,pos):
+    userCmd.parsedCommand = ParsedCommand(pos)
+
 
 if __name__ == "__main__":
     print("arcticFilterWheel running on port %i"%UserPort)
@@ -43,6 +51,7 @@ if __name__ == "__main__":
                 nextMove = tmp
                 break
         nextCmd = expandCommand()
+        fakeParse(nextCmd, nextMove)
         arcticFilterWheel.cmd_move(nextCmd)
         nextCmd.addCallback(beginCycle)
 
