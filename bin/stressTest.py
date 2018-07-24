@@ -52,6 +52,6 @@ if __name__ == "__main__":
         arcticFilterWheel.cmd_home(homeCmd)
         homeCmd.addCallback(beginCycle)
 
-    home()
+    reactor.callLater(2,home)
 
     reactor.run()
