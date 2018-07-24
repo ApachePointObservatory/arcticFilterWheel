@@ -10,8 +10,8 @@ import numpy
 UserPort = 37000
 
 ITER = 0
-MAXITER = 5
-nextMove = 0
+MAXITER = 500
+nextMove = 1
 
 class ParsedCommand(object):
     def __init__(self, pos):
