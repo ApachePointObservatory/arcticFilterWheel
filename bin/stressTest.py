@@ -13,7 +13,7 @@ ITER = 0
 MAXITER = 5
 nextMove = 0
 
-class ParsedCommand(object)
+class ParsedCommand(object):
     def __init__(self, pos):
         self.parsedPositionalArgs = [pos]
 
