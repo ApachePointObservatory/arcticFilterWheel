@@ -10,7 +10,7 @@ import numpy
 UserPort = 37000
 
 ITER = 0
-MAXITER = 5
+MAXITER = 500
 nextMove = 1
 
 moveLog = []
