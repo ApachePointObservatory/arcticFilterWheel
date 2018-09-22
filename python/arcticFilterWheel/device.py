@@ -128,6 +128,11 @@ def positionTriggered():
     # print("motor state", motorStatus())
     # print("motor pos", motorPos())
     # print("enc pos", encPos())
+    oneBit = 1 - device.evgetin(ID_1)
+    twoBit = 1 - device.evgetin(ID_2)
+    fourBit = 1 - device.evgetin(ID_4)
+    print("bits: %i%i%i%i"%(posBit, fourBit, twoBit, oneBit))
+
     return posBit==0
 
 def readWheelID():
