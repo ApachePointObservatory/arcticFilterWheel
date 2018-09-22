@@ -265,6 +265,7 @@ def stopNext(d):
 
 
 def checkPosition(dummy):
+    print("check position")
     global MOVE_COUNTER
     global MOVE_COUNTER_TARGET
     status.update()
