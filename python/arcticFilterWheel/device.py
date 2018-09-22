@@ -282,8 +282,10 @@ def checkPosition(dummy):
     elif MOVE_COUNTER < MOVE_COUNTER_TARGET:
         #another move wanted
         if status.atHome:
+            print("at home")
             setPos(0)
             if status.isHoming and status.filterID is None:
+                print("set whjeel id")
                 status.setWheelID()
                 status.filterID = 1
                 # found home.  Now cycle wheel through
