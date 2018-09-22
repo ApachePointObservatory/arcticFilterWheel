@@ -128,11 +128,6 @@ def positionTriggered():
     # print("motor state", motorStatus())
     # print("motor pos", motorPos())
     # print("enc pos", encPos())
-    oneBit = 1 - device.evgetin(ID_1)
-    twoBit = 1 - device.evgetin(ID_2)
-    fourBit = 1 - device.evgetin(ID_4)
-    print("bits: %i%i%i%i"%(posBit, fourBit, twoBit, oneBit))
-
     return posBit==0
 
 def readWheelID():
@@ -203,6 +198,14 @@ def stop():
     ### blocks but who cares, its very short
     while motorStatus() != 0:
         pass
+    posBit = device.evgetin(HALL_POS)
+    # print("motor state", motorStatus())
+    # print("motor pos", motorPos())
+    # print("enc pos", encPos())
+    oneBit = 1 - device.evgetin(ID_1)
+    twoBit = 1 - device.evgetin(ID_2)
+    fourBit = 1 - device.evgetin(ID_4)
+    print("bits: %i%i%i%i"%(posBit, fourBit, twoBit, oneBit))
     return success == 1
 
 def connect():
