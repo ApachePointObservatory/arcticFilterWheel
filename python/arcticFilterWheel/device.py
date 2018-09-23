@@ -198,14 +198,6 @@ def stop():
     ### blocks but who cares, its very short
     while motorStatus() != 0:
         pass
-    posBit = device.evgetin(HALL_POS)
-    # print("motor state", motorStatus())
-    # print("motor pos", motorPos())
-    # print("enc pos", encPos())
-    oneBit = 1 - device.evgetin(ID_1)
-    twoBit = 1 - device.evgetin(ID_2)
-    fourBit = 1 - device.evgetin(ID_4)
-    print("bits: %i%i%i%i"%(posBit, fourBit, twoBit, oneBit))
     return success == 1
 
 def connect():
@@ -265,7 +257,6 @@ def stopNext(d):
 
 
 def checkPosition(dummy):
-    print("check position")
     global MOVE_COUNTER
     global MOVE_COUNTER_TARGET
     status.update()
@@ -282,10 +273,8 @@ def checkPosition(dummy):
     elif MOVE_COUNTER < MOVE_COUNTER_TARGET:
         #another move wanted
         if status.atHome:
-            print("at home")
             setPos(0)
             if status.isHoming and status.filterID is None:
-                print("set whjeel id")
                 status.setWheelID()
                 status.filterID = 1
                 # found home.  Now cycle wheel through
