@@ -329,6 +329,7 @@ def home():
     setPos(0)
     status.isHoming = True
     status.isMoving = True
+    status.filterID = None
     offsetFilter()
 
 def moveToFilter(filterID):
