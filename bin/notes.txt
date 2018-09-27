@@ -1,0 +1,6 @@
+median step width of hall = 31 enc counds
+medain (middle) detection of home always works
+
+Scan 12 - after reassembly
+Scan 13 - upside down
+Scan 14 - new spring, small spacer, fixed shaft
