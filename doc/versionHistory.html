@@ -6,6 +6,16 @@
 <body>
 <h1><a href="index.html">ARCTIC Filter Wheel</a> Version History</h1>
 
+<h4>2.2 2018-09-23<h4>
+<ul>
+    <li> Fix bug in which homing often required two tries.
+</ul>
+
+<h4>2.1 2018-07-19<h4>
+<ul>
+    <li> 2.0 wasn't running...my local version was, so I just tagged it here.
+</ul>
+
 <h4>2.0 2018-07-19<h4>
 <ul>
     <li> Completely move and re-wrap C codebase (evgpio and arcus) into product.  Change move strategy to move incrementally 1 filter at a time and verifying a detection for every position bit hall sensor.  When a position bit is sensed the motor is commanded to stop (with decel).  The motor parameters have been tuned such that the wheel should decelerate into the center (+- 10 steps) of the magnent.
