@@ -2,14 +2,14 @@ from __future__ import division, absolute_import
 
 import syslog
 import collections
-
+import time
 from twistedActor import Actor, expandUserCmd, log, UserCmd
 
 from .commandSet import arcticFWCommandSet
 from .version import __version__
 
 # from filter import FilterWheel
-from .device import moveToFilter, home, status, stop, init, setDiffuserIn, setDiffuserOut
+from .device import moveToFilter, home, status, stop, init, setDiffuserIn, setDiffuserOut, setRotationStart, setRotationStop
 
 UserPort = 37000
 
@@ -47,6 +47,9 @@ class ArcticFWStatus(object):
             ("inPosition", self.status.inPosition),
             ("atHome", self.status.atHome),
             ("diffuInBeam", "?" if self.status.diffuserIn is None else int(self.status.diffuserIn)),
+	    ("diffuCover", "?" if self.status.diffuserCover is None else int(self.status.diffuserCover)),
+	    ("diffuserAtSpeed", "?" if self.status.diffuserRPM is None else int(self.status.diffuserRPM)),
+	    ("diffuserRot", "?" if self.status.diffuserRot is None else int(self.status.diffuserRot)),
         ))
 
     @property
@@ -64,6 +67,14 @@ class ArcticFWStatus(object):
     @property
     def inPosition(self):
         return self.status.inPosition
+
+    @property
+    def diffuserIn(self):
+	return self.status.diffuserIn
+
+    @property
+    def diffuCover(self):
+	return self.status.diffuserCover
 
     @property
     def state(self):
@@ -90,7 +101,7 @@ class ArcticFWStatus(object):
 
     @property
     def diffuStr(self):
-       return self._subStatusStr(["diffuInBeam"])
+       return self._subStatusStr(["diffuInBeam", "diffuCover","diffuserRot", "diffuserAtSpeed"])
 
     @property
     def statusStr(self):
@@ -230,10 +241,14 @@ class ArcticFWActor(Actor):
     def cmd_diffuIn(self, userCmd):
         """Move the diffuser into the beam
         """
-        setDiffuserIn()
-        self.getStatus()
-        self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
-        userCmd.setState(userCmd.Done)
+	log.info("%s.cmd_diffuIn(userCmd=%s)"%(self,userCmd))
+	if self.status.diffuCover == 0:
+	        setDiffuserIn()
+		time.sleep(3)
+        	self.getStatus()
+	        self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
+        	userCmd.setState(userCmd.Done)
+	
         return True
 
     def cmd_diffuOut(self, userCmd):
@@ -248,13 +263,24 @@ class ArcticFWActor(Actor):
     def cmd_startDiffuRot(self, userCmd):
         """Move the diffuser into the beam
         """
-        userCmd.setState(userCmd.Failed, 'Rotation not implemented')
+	if self.status.diffuserIn == 1:
+		setRotationStart()
+		self.getStatus()
+		self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
+		userCmd.setState(userCmd.Done)
+	else:#functionaly this works but the status below never makes it back to the users in the hub or on the gui.
+		self.writeToUsers("f", "Diffuser is not in Beam", cmd=userCmd)
+		self.getStatus()
+		userCmd.setState(userCmd.Failed)
+
         return True
 
     def cmd_stopDiffuRot(self, userCmd):
-        """Move the diffuser out of the beam
-        """
-        userCmd.setState(userCmd.Failed, 'Rotation not implemented')
+	#always allow diffuser to stop
+	setRotationStop()
+	self.getStatus()
+	self.writeToUsers("i", self.status.statusStr, cmd=userCmd)
+	userCmd.setState(userCmd.Done)
         return True
 
 

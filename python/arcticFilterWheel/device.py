@@ -23,11 +23,19 @@ MOVE_COUNTER_TARGET = None
 
 ### GPIO MAP
 # ev* code in evgpio.h
-HALL_POS = 36 # hall position bit
-ID_1 = 37 # fw ID ones bit
-ID_2 = 38 # fw ID twos bit
-ID_4 = 39 # fw ID fours bit
-DIFFU = 76 # diffuser bit
+HALL_POS = 36 # fw hall position bit
+ID_1 = 37     # fw ID ones bit
+ID_2 = 38     # fw ID twos bit
+ID_4 = 39     # fw ID fours bit
+# ID_8 = 40     # fw ID eights bit # not implemented - wfk
+# DIFFU = 76   # old diffuser bit
+DIFFRPM_ISRUN  = 78  # is the RPM up to speed 1 = GOOD
+DIFFU = 80    # diffuser in/out bit 1 = IN
+DIFFUROT = 83 # diffuser rotate bit 1 = ROTATE
+DIFFUPOS_IN = 81 # is the diffuser actually in position HED sensor = 0 = true
+DIFFUPOS_OUT = 82 #IS the diffuser out of position HED sensor  0 = true
+DIFFU_COVERSTATE = 79 #cover is off or on 1= off
+
 
 # initialization send to the stepper motor controller
 # 2nd (float) value indicates the time delay imposed after
@@ -72,7 +80,11 @@ class Status(object):
         self.wheelID = None
         self.inPosition = None
         self.diffuserIn = None
-
+	self.diffuserOut = None
+	self.diffuserRot = None
+	self.diffuserRPM = None
+	self.diffuserCover = None
+         
         self.isHomed = False
         self.targetPos = None
         self.isHoming = False
@@ -103,6 +115,10 @@ class Status(object):
         self._wheelID = readWheelID()
         self.inPosition = positionTriggered()
         self.diffuserIn = diffuserInPos()
+	self.diffuserOut = diffuserOutPos()	
+        self.diffuserRot = diffuserRot()
+	self.diffuserRPM = getRotationStatus()
+	self.diffuserCover = diffuserCoverOn()
 
     def __repr__(self):
         """blah
@@ -114,6 +130,9 @@ class Status(object):
             "wheelID",
             "inPosition",
             "diffuserIn",
+	    "diffuserRot",
+	    "diffuserCover",
+	    "diffuserRPM",
         ]
         statusStr="Status:\n"
         for attr in attrList:
@@ -143,16 +162,49 @@ def readWheelID():
         return None
     return fwID
 
+#status of the rotation bit
+def diffuserRot():
+    rotBit = device.evgetin(DIFFUROT)
+    return rotBit == 1
+
+def diffuserCoverOn():
+    coverBit = device.evgetin(DIFFU_COVERSTATE)
+    return coverBit == 0
+
 def diffuserInPos():
     # return true if diffuser is in position
-    posBit = device.evgetin(DIFFU)
-    return posBit==1
+    # actually check sensor here to determine if it is in or out.
 
+    #posBit = device.evgetin(DIFFU)  
+    inPosBit = device.evgetin(DIFFUPOS_IN)
+
+    return inPosBit==0 # 0 bit means true
+
+def diffuserOutPos(): 
+    outPosBit = device.evgetin(DIFFUPOS_OUT)
+    return outPosBit==0 # 0 bit means true
+
+#there is lgoic to these sets, and that is determined in the arcticFWActor.py
+
+#delays put in to give it time to update the states...
 def setDiffuserIn():
-    device.evsetdata(DIFFU, 1)
+    device.evsetdata(DIFFU, 1)  
 
 def setDiffuserOut():
     device.evsetdata(DIFFU, 0)
+    time.sleep(.5) 
+
+def setRotationStart():
+    device.evsetdata(DIFFUROT, 1)  
+    time.sleep(4.5)
+
+def setRotationStop():
+    device.evsetdata(DIFFUROT, 0)
+    time.sleep(3)
+
+def getRotationStatus(): #this should return what the rotation is set to and if it is to RPM or not at a higher level.
+    rpmBit = device.evgetin(DIFFRPM_ISRUN)
+    return rpmBit==1 # 1 bit means true
 
 def motorPos():
     success = device.sendCmd("PX")
