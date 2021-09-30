@@ -1,8 +1,17 @@
 #! /usr/bin/python
 
+
 import os
 # we have rapid polling for position magnent ensure it isn't late
-os.nice(-15)
+import socket #hack here
+
+#this host is to check where this filterwheel code is running, on the arctic-controller
+#we want to do what is detailed (os.nice etc) on arcticICC we sooo don't want to do that stuff
+
+HOST=socket.gethostname()
+if HOST != "arctic-icc.apo.nmsu.edu":
+	os.nice(-15)
+
 import sys
 import time
 import functools
@@ -65,11 +74,11 @@ motorInitList = [
     ("EO=1", 0.1), #power up the motor
 ]
 
-fwDIR = os.environ["ARCTICFILTERWHEEL_DIR"]
-soPath = os.path.join(fwDIR,"src/device.so")
-
-device = CDLL(soPath)
-device.getUSBReply.restype = c_char_p
+if HOST != "arctic-icc.apo.nmsu.edu":
+	fwDIR = os.environ["ARCTICFILTERWHEEL_DIR"]
+	soPath = os.path.join(fwDIR,"src/device.so")
+	device = CDLL(soPath)
+	device.getUSBReply.restype = c_char_p
 
 class Status(object):
     def __init__(self):
